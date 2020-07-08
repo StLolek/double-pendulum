@@ -1,9 +1,9 @@
-let r1, r2, m1, m2, s1, s2, av1, av2, aa1, aa2, g, a1, a2;
+let r1, r2, m1, m2, s1, s2, av1, av2, aa1, aa2, g = 9.81, a1, a2;
 let buttonCheck;
 let loopCheck;
 let bufferCheck = true;
 let restartCheck = true;
-let s1Input, s2Input, r1Input, r2Input, m1Input, m2Input, gInput;
+let s1Input, s2Input, r1Input, r2Input, m1Input, m2Input, gInput, gSelect;
 let slider;
 let px2 = -1;
 let py2 = -1;
@@ -12,7 +12,7 @@ let buffer;
 let counter = 0;
 
 function setup() {
-    frameRate(60);
+    frameRate(240);
     createCanvas(800, 600);
     loopCheck = false;
     noLoop();
@@ -31,6 +31,16 @@ function setup() {
     buttonCheck.mousePressed(clearing);
 
     createElement('h4', 'Przyspieszenie ziemskie \(kropka jako przecinek\)');
+
+    gSelect = createSelect();
+    gSelect.option('Ziemia');
+    gSelect.option('Merkury');
+    gSelect.option('Wenus/Uran');
+    gSelect.option('Mars');
+    gSelect.option('Saturn');
+    gSelect.option('Neptun');
+    gSelect.option('Jowisz');
+    gSelect.changed(gSelEvent)
     gInput = createInput('9.81');
     createElement('h4', 'Kąt pierwszej belki w stopniach');
     s1Input = createInput('30');
@@ -49,7 +59,36 @@ function setup() {
     slider.style('background-color','#000000');
     setter();
 }
-
+function gSelEvent() {
+    if(gSelect.value() == 'Ziemia')
+    {
+        gInput.value(9.81);
+    }
+    else if(gSelect.value() == 'Merkury')
+    {
+        gInput.value(3.7);
+    }
+    else if(gSelect.value() == 'Wenus/Uran')
+    {
+        gInput.value(8.87);
+    }
+    else if(gSelect.value() == 'Mars')
+    {
+        gInput.value(3.711);
+    }
+    else if(gSelect.value() == 'Saturn')
+    {
+        gInput.value(10.44);
+    }
+    else if(gSelect.value() == 'Neptun')
+    {
+        gInput.value(11.15);
+    }
+    else if(gSelect.value() == 'Jowisz')
+    {
+        gInput.value(24.79);
+    }
+}
 function setter() {
     restartCheck = true;
     loopCheck = false;
