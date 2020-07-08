@@ -3,14 +3,14 @@ let buttonCheck;
 let loopCheck;
 let bufferCheck = true;
 let restartCheck = true;
-let s1Input, s2Input, r1Input, r2Input, m1Input, m2Input, gInput, gSelect;
+let s1Input, s2Input, r1Input, r2Input, m1Input, m2Input, gInput, gSelect,Select;
 let slider;
 let px2 = -1;
 let py2 = -1;
 let cx, cy;
 let buffer;
 let counter = 0;
-
+let type = 'line' ;
 function setup() {
     frameRate(240);
     createCanvas(800, 600);
@@ -59,7 +59,21 @@ function setup() {
     createElement('h4', 'Opory \(na prawo brak oporów, na lewo maksymalne opory\) ');
     slider = createSlider(0.990, 1, 1, 0.0001);
     slider.style('background-color','#000000');
+    Select = createSelect();
+    Select.option('Linia');
+    Select.option('Kropki');
+    Select.changed(SelectEvent);
     setter();
+}
+function SelectEvent() {
+if(Select.value() == 'Linia')
+{
+    type = 'line';
+}
+else if(Select.value() == 'Kropki'){
+    type = 'point';
+}
+
 }
 function gSelEvent() {
     if(gSelect.value() == 'Ziemia')
@@ -168,7 +182,12 @@ function draw() {
     }
 
     if (bufferCheck == true) {
-        buffer.line(px2, py2, x2, y2);
+        if(type == 'line') {
+            buffer.line(px2, py2, x2, y2);
+        }
+        else if (type == 'point') {
+            buffer.point(x2,y2);
+        }
     }
 
     px2 = x2;
