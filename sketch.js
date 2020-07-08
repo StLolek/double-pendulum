@@ -14,6 +14,7 @@ let counter = 0;
 function setup() {
     frameRate(240);
     createCanvas(800, 600);
+
     loopCheck = false;
     noLoop();
     pixelDensity(1);
@@ -34,6 +35,7 @@ function setup() {
 
     gSelect = createSelect();
     gSelect.option('Ziemia');
+    gSelect.option('Księżyc');
     gSelect.option('Merkury');
     gSelect.option('Wenus/Uran');
     gSelect.option('Mars');
@@ -55,7 +57,7 @@ function setup() {
     createElement('h4', 'Masa drugiej kulki');
     m2Input = createInput('10');
     createElement('h4', 'Opory \(na prawo brak oporów, na lewo maksymalne opory\) ');
-    slider = createSlider(0.990, 1, 1, 0.0005);
+    slider = createSlider(0.990, 1, 1, 0.0001);
     slider.style('background-color','#000000');
     setter();
 }
@@ -63,6 +65,10 @@ function gSelEvent() {
     if(gSelect.value() == 'Ziemia')
     {
         gInput.value(9.81);
+    }
+    else if(gSelect.value() == 'Księżyc')
+    {
+        gInput.value(1.62);
     }
     else if(gSelect.value() == 'Merkury')
     {
@@ -187,5 +193,6 @@ function startstop() {
         bufferCheck = true;
         loopCheck = false;
         noLoop();
+
     }
 }

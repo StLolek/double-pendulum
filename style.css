@@ -1,7 +1,23 @@
 body {
 background-color: white;
 }
-h4 {
+h1   {
     font-family: "JetBrains Mono";
-    font-size: small;
+    font-size: 40px;
+}
+h2  {
+    font-family: "JetBrains Mono";
+    font-size: 20px;
+}
+
+body {
+    background-color: lightcyan;
+    margin: 0;
+    display: grid;
+
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+
+    /* This centers our sketch vertically. */
+    align-items: center;
 }
