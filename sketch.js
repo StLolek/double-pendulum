@@ -2,6 +2,7 @@ let r1, r2, m1, m2, s1, s2, av1, av2, aa1, aa2, g, a1, a2;
 let buttonCheck;
 let loopCheck;
 let bufferCheck = true;
+let restartCheck = true;
 let s1Input, s2Input, r1Input, r2Input, m1Input, m2Input, gInput;
 let slider;
 let px2 = -1;
@@ -11,7 +12,7 @@ let buffer;
 let counter = 0;
 
 function setup() {
-    frameRate(240);
+    frameRate(60);
     createCanvas(800, 600);
     loopCheck = false;
     noLoop();
@@ -49,6 +50,7 @@ function setup() {
 }
 
 function setter() {
+    restartCheck = true;
     loopCheck = false;
     bufferCheck = true;
     g = gInput.value() * 0.1;
@@ -132,6 +134,11 @@ function clearing() {
 
 function startstop() {
     if (loopCheck == false) {
+        if(restartCheck==true)
+        {
+            restartCheck = false;
+            buffer.clear();
+        }
         counter = 0;
         buffercheck = false;
         loopCheck = true;
