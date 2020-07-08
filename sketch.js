@@ -46,6 +46,7 @@ function setup() {
     m2Input = createInput('10');
     createElement('h4', 'Opory \(na prawo brak oporów, na lewo maksymalne opory\) ');
     slider = createSlider(0.990, 1, 1, 0.0005);
+    slider.style('background-color','#000000');
     setter();
 }
 
@@ -109,17 +110,18 @@ function draw() {
     av2 *= slider.value();
     line(0, 0, x1, y1)
     fill(0);
-    ellipse(x1, y1, 20, 20);
+    ellipse(x1, y1, 25, 25);
 
     line(x1, y1, x2, y2)
     fill(0);
-    ellipse(x2, y2, 20, 20);
+    ellipse(x2, y2, 25, 25);
     counter++;
-    if (counter == 1000) {
+    if (counter == 600) {
         counter = 0;
-        buffer.stroke(random(255), random(255), random(255));
+        buffer.stroke(random(175));
+        buffer.strokeWeight(random(2,4))
     }
-    buffer.strokeWeight(2);
+
     if (bufferCheck == true) {
         buffer.line(px2, py2, x2, y2);
     }
@@ -134,8 +136,7 @@ function clearing() {
 
 function startstop() {
     if (loopCheck == false) {
-        if(restartCheck==true)
-        {
+        if (restartCheck == true) {
             restartCheck = false;
             buffer.clear();
         }
