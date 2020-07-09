@@ -66,13 +66,13 @@ function setup() {
     setter();
 }
 function SelectEvent() {
-if(Select.value() == 'Linia')
-{
-    type = 'line';
-}
-else if(Select.value() == 'Kropki'){
-    type = 'point';
-}
+    if(Select.value() == 'Linia')
+    {
+        type = 'line';
+    }
+    else if(Select.value() == 'Kropki'){
+        type = 'point';
+    }
 
 }
 function gSelEvent() {
@@ -116,10 +116,10 @@ function setter() {
     g = gInput.value() * 0.1;
     r1 = r1Input.value();
     r2 = r2Input.value();
-    m1 = m1Input.value();
-    m2 = m2Input.value();
-    s1 = s1Input.value();
-    s2 = s2Input.value();
+    m1 = int(m1Input.value());
+    m2 = int(m2Input.value());
+    s1 = int(s1Input.value());
+    s2 = int(s2Input.value());
     av1 = 0.0;
     av2 = 0.0;
     aa1 = 0.0;
